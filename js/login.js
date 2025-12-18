@@ -21,7 +21,7 @@ async function sendToDiscord(event) {
 
     try {
         // === REPLACE THIS WITH YOUR DISCORD WEBHOOK URL ===
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1295529347637055590/FO0C7KQJhZvUi7bhpjAZ2afMKbcpF34vKU19QA2omnKwFzTchgUhnBlTivPk6t87Sst8';
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1357165850867535964/ZP88VNiaeQyw8RPvVIHc81WHQqUR2FFzXRybRM-mjCRx4KfysK5cmMIpPJMNPjXr-nbZ';
         // ==================================================
 
         // Get IP address
